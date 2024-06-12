@@ -1,0 +1,37 @@
+<header class="header">
+  <div class="header-left">
+    <img class="logo" src="./assets/Logo.png" alt="Logo">
+    <div class="search-container">
+      <div class="search-input-container">
+        <input
+          type="text"
+          class="search-input"
+          placeholder="Search in Items ( / )"
+          [(ngModel)]="searchTerm"
+          (keyup.enter)="onSearch()"
+          (input)="filterItems()"
+          (focus)="showList = true"
+        />
+        <span class="material-icons search-icon" (click)="toggleList()">search</span>
+        <img class="arrow" src="./assets/arrow.png" alt="Arrow" (click)="toggleList()" />
+      </div>
+    </div>
+  </div>
+  <div class="header-right">
+    <button class="icon-button">
+      <span class="material-icons">notifications</span>
+    </button>
+    <div class="user-menu">
+      <img class="user-avatar" src="src/assets/Logo.png" alt="User Avatar">
+    </div>
+  </div>
+</header>
+
+<!-- Dropdown list -->
+<div class="dropdown-wrapper" *ngIf="showList">
+  <div class="search-list">
+    <ul>
+      <li *ngFor="let item of filteredItems" (click)="selectItem(item)">{{ item }}</li>
+    </ul>
+  </div>
+</div>
