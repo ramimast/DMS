@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+    background-color: #21263c;
+    color: white;
+    height: 48px;
+    position: relative; /* Ensure relative positioning */
+    z-index: 1; /* Ensure it appears above other content */
+}
+
+.header-left,
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 70px;
+    margin-right: 16px;
+}
+
+.search-container {
+    position: relative; /* Needed for the absolute positioning of the dropdown */
+    margin-left: 60px;
+}
+
+.search-input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    padding: 8px 32px 8px 40px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 250px;
+    background-color: #333850;
+    color: white;
+    font-size: 14px;
+    transition: border-color 0.2s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #4d90fe;
+}
+
+.search-icon {
+    position: absolute;
+    top: 50%;
+    left: 8px;
+    transform: translateY(-50%);
+    color: white;
+    transition: color 0.2s ease;
+    z-index: 1;
+}
+
+.search-input:focus + .search-icon {
+    color: #fff;
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    left: 24px;
+    transform: translateY(-50%);
+    height: 13px;
+    width: 13px;
+    z-index: 1;
+    filter: invert(37%) sepia(88%) saturate(738%) hue-rotate(193deg) brightness(92%) contrast(95%);
+}
+
+.search-button {
+    background-color: #333850;
+    color: #fff;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.search-button:hover {
+    background-color: #4dc6fe;
+}
+
+.material-icons {
+    font-size: 1.2rem;
+}
+
+.icon-button {
+    background: none;
+    border: none;
+    color: white;
+    margin: 0 8px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.user-menu {
+    display: flex;
+    align-items: center;
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+.dropdown-wrapper {
+    position: absolute;
+    top: 56px;
+    left: 179px;
+    margin-top: 8px;
+    width: 250px;
+    z-index: 1000;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.search-list {
+    max-height: 200px;
+    overflow-y: auto;
+    color: black;
+}
+
+.search-list ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.search-list li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.search-list li:hover {
+    background-color: #f0f0f0;
+}
