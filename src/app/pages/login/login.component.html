@@ -1,0 +1,182 @@
+<section class="vh-100">
+    <div class="container custom-container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-lg-10">
+          <div class="card" style="border-radius: 1rem;">
+            <div class="row g-0">
+              <div class="col-md-6 col-lg-5 d-none d-md-block banner">
+                <img src="../../../assets/image/banner.jpg" alt="login form" class="img-fluid"
+                  style="border-radius: 1rem 0 0 1rem; height: 100%;">
+              </div>
+              <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                <div class="card-body p-4 p-lg-5 text-black">
+  
+                  <div class="text-center">
+                    <img class="image" src="../../../assets/image/Logo 1.png" alt="Company Logo" height="100px">
+                  </div>
+  
+                  <!-- <div class="toast-container position-fixed top-0 start-50 translate-middle-x">
+                    <div #liveToast class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                      <div class="toast-body">
+                        Hello, world! This is a toast message.
+                      </div>
+                    </div>
+                  </div> -->
+                  
+                  <div class="text-center success" *ngIf="nextSuccess"><span><i class="fa fa-check-circle"
+                        aria-hidden="true"></i> {{nextSuccess}}</span></div>
+                        <div class="text-center error" *ngIf="nextError"><span><i class="fa fa-exclamation-circle"
+                              aria-hidden="true"></i> {{nextError}}</span></div>
+                              
+                  <section *ngIf="!showtfaForm">
+                    <form [formGroup]="loginForm" (ngSubmit)="onNext()">
+                      <div *ngIf="isLinkClicked && isUsernameEmpty()" class="text-center error">
+                        <span>Please enter a username.</span>
+                      </div>
+  
+                      <div class="form-floating text-secondary">
+                        <input type="text" class="form-control" id="floatingInput1" formControlName="username"
+                        placeholder="username"
+                          [ngClass]="{'is-invalid': loginForm.get('username')?.invalid && loginForm.get('username')?.touched}"
+                          >
+                        <label for="floatingInput1">Username </label>
+                        <div
+                          *ngIf="loginForm.get('username')?.invalid && (loginForm.get('username')?.dirty || loginForm.get('username')?.touched)"
+                          class="error mt-1">
+                          <span *ngIf="loginForm.get('username')?.errors?.['required']"> *username is
+                            required.</span>
+                          <span
+                            *ngIf="loginForm.get('username')?.errors?.['invalidUsername'] && (loginForm.get('username')?.dirty && loginForm.get('username')?.touched)">*Invalid
+                            email or mobile format.</span>
+                        </div>
+                      </div>
+  
+                      <div class="form-floating text-secondary">
+                        <input type="password" type="{{ hide ? 'password' : 'text' }}" class="form-control"
+                          id="floatingInput2" formControlName="password" placeholder="password"
+                          [ngClass]="{'is-invalid': loginForm.get('password')?.invalid && loginForm.get('password')?.touched}">
+                        <label for="floatingInput2">Password</label>
+                        <!-- <div > -->
+                        <p class="eye mt-1" (click)="hide = !hide">
+                          Show <svg *ngIf="!hide" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye">
+                            <path d="M1 12S5 4 12 4s11 8 11 8-4 8-11 8S1 12 1 12z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                          </svg>
+                          <svg *ngIf="hide" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye-off">
+                            <path d="M17.94 17.94A10 10 0 0 1 12 20C5 20 1 12 1 12a10 10 0 0 1 4.22-4.92"></path>
+                            <path d="M1 1l22 22"></path>
+                            <path d="M9.31 9.31A4 4 0 0 1 15 15M21 21L3 3"></path>
+                            <path d="M12 4a10 10 0 0 1 7.94 3.94M12 12a4 4 0 0 1-4 4"></path>
+                          </svg>
+                          
+                          
+                          
+                           <!-- <i *ngIf="hide" class="fa-regular fa fa-eye-slash"></i><i *ngIf="!hide"
+                            class="fa-regular fa fa-eye"></i> -->
+                        </p>
+                        <!-- </div> -->
+                        <div
+                          *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)"
+                          class="error" style="margin-top:-16px ; margin-bottom:16px;">
+                          <span *ngIf="loginForm.get('password')?.errors?.['required']">*password is required.</span>
+                        </div>
+  
+                        <!-- <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty && loginForm.get('password')?.touched)" class="error">
+                        <span [ngClass]="loginForm.get('password')?.errors?.['required']||loginForm.get('password')?.errors?.['hasAlphanumeric'] ? 'invalid':'valid'"> alphanumeric, </span>
+                        <span [ngClass]="loginForm.get('password')?.errors?.['required']||loginForm.get('password')?.errors?.['hasSpecialChar'] ? 'invalid':'valid'">$, &#64;, #, _, %, * is allowed </span>
+                      </div> -->
+                      </div>
+                      <!-- #liveToastBtn  -->
+  
+                      <div class="row">
+                        <div class="text-center mt-2">
+                          <button type="submit" [disabled]="loginForm.invalid"
+                            [ngClass]="{'btn-enabled': loginForm.valid, 'btn-disabled': loginForm.invalid}"
+                            class="btn">NEXT <i class="fa fa-angle-double-right ms-1" aria-hidden="true"></i>
+                          </button>
+                        </div>
+                      </div>
+  
+                    </form>
+                    <div class="forgot-password">
+                      <small>Forgot Password?</small>
+                      <small (click)="goToForgotPassword()" class="click text-primary">click here
+                          </small>
+                      <!-- <small (click)="goToForgotPassword()" [class.clickable]="isUsernameFilled()" class="click text-primary">click here
+                          </small> -->
+                    </div>
+                  </section>
+  
+  
+                  <div class="text-center success" *ngIf="loginSuccess"><span><i class="fa fa-check-circle"
+                    aria-hidden="true"></i> {{loginSuccess}}</span></div>
+                    <div class="text-center success" *ngIf="sendOtpAgain"><span><i class="fa fa-check-circle"
+                      aria-hidden="true"></i> {{sendOtpAgain}}</span></div>
+                    <div class="text-center error" *ngIf="loginError"><span><i class="fa fa-exclamation-circle" aria-hidden="true"></i> {{loginError}}</span></div>
+              
+                  <section *ngIf="showtfaForm">
+                    <h6 class="text-center mt-2">Two-Factor Authentication</h6>
+                      
+                    <form [formGroup]="tfaForm" (ngSubmit)="onLogin()">
+                        <div class="form-floating text-secondary">
+                          <input type="text" id="username" class="form-control" formControlName="username" placeholder="username" name="username" [ngClass]="{'is-invalid': tfaForm.get('username')?.invalid && tfaForm.get('username')?.touched}" required readonly />
+                          <label for="username">username:</label>
+                        </div>
+  
+                        <div class="form-floating text-secondary">
+                          <input type="password" type="{{ hide ? 'password' : 'text' }}" class="form-control"
+                            id="password" formControlName="password" placeholder="password"
+                            [ngClass]="{'is-invalid': tfaForm.get('password')?.invalid && tfaForm.get('password')?.touched} " name="password" required readonly>
+                          <label for="floatingInput2">Password</label>
+                          <!-- <div > -->
+                          <p class="eye mt-1" (click)="hide = !hide">
+                            Show <svg *ngIf="!hide" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye">
+                                <path d="M1 12S5 4 12 4s11 8 11 8-4 8-11 8S1 12 1 12z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                              </svg>
+                              <svg *ngIf="hide" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye-off">
+                                <path d="M17.94 17.94A10 10 0 0 1 12 20C5 20 1 12 1 12a10 10 0 0 1 4.22-4.92"></path>
+                                <path d="M1 1l22 22"></path>
+                                <path d="M9.31 9.31A4 4 0 0 1 15 15M21 21L3 3"></path>
+                                <path d="M12 4a10 10 0 0 1 7.94 3.94M12 12a4 4 0 0 1-4 4"></path>
+                              </svg>
+                             <!-- <i *ngIf="hide" class="fa-regular fa fa-eye-slash"></i><i *ngIf="!hide"
+                              class="fa-regular fa fa-eye"></i> -->
+                          </p>
+                          </div>
+    
+                        <div class="input-group mt-1">
+                          <input type="text" id="tfa" name="tfa" placeholder="Two-Factor-Code" placeholder="Two-Factor-Code" class="form-control" formControlName="tfa" maxlength="6" minlength="6" style="height: 40px;" [ngClass]="{'is-invalid': tfaForm.get('tfa')?.invalid && tfaForm.get('tfa')?.touched}" required aria-label="Recipient's username" aria-describedby="button-addon2" pattern="[0-9]*" (input)="onCodeInputChange($event)">
+  
+                          <button class="btn btn-secondary" type="button" id="button-addon2" style="height: 40px; font-size: 14px; padding: 0;" [disabled]="isResendDisabled" [ngClass]="{'btn-enabled':!isResendDisabled,'btn-disabled':isResendDisabled}" (click)="resendOTP()">{{ isResendDisabled ? timeFormat : 'Resend Code' }}</button>
+  
+                          <div *ngIf="tfaForm.get('tfa')?.invalid && (tfaForm.get('tfa')?.dirty || tfaForm.get('tfa')?.touched)" class="error mt-2">
+                            <span *ngIf="tfaForm.get('tfa')?.errors?.['required']"> *Two-Factor-Code is required.</span>
+                            <span *ngIf="tfaForm.get('tfa')?.errors?.['pattern'] && (tfaForm.get('tfa')?.dirty && tfaForm.get('tfa')?.touched)">Invalid Two-Factor-Code format.</span>
+                          </div>
+                        </div>
+                        
+                      <div class="text-center mt-3">
+                        <button type="submit" [disabled]="tfaForm.invalid" [ngClass]="{'btn-enabled': tfaForm.valid, 'btn-disabled': tfaForm.invalid}" class="btn" >LOGIN <i class="fa fa-angle-double-right ms-1" aria-hidden="true"></i></button>
+                      </div>
+                      <!-- <div>
+                        <label>{{generatedCode}}</label>
+                      </div> -->
+                  </form>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <div *ngIf="showPopup" class="showPopup">
+    <div class="popup">
+      <p>Please wait...</p>
+      <!-- <button (click)="resetPopup()" >Try Again in seconds</button> -->
+      <button class="btn btn-secondary" type="button" [disabled]="isClickDisabled" [ngClass]="{'btn-enabled':!isClickDisabled,'btn-disabled':isClickDisabled}" (click)="resetPopup()">{{ isClickDisabled ? PopuptimeFormat : 'Try Again' }}</button>
+    </div>
+  </div>

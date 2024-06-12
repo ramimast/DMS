@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "DMS_project": {
+    "DMS_Project": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -30,9 +30,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": [],
+            "scripts": ["./node_modules/bootstrap/dist/js/bootstrap.min.js"],
             "server": "src/main.server.ts",
             "prerender": true,
             "ssr": {
@@ -67,10 +68,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "DMS_project:build:production"
+              "buildTarget": "DMS_Project:build:production"
             },
             "development": {
-              "buildTarget": "DMS_project:build:development"
+              "buildTarget": "DMS_Project:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -78,7 +79,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "DMS_project:build"
+            "buildTarget": "DMS_Project:build"
           }
         },
         "test": {
@@ -102,8 +103,5 @@
         }
       }
     }
-  },
-  "cli": {
-    "analytics": "d25332c0-ed92-43bf-9e85-6539aa71b7f7"
   }
 }
