@@ -1,0 +1,103 @@
+<div class="column">
+    <div class="offcanvas-body">
+        <div class="text-left">
+            <div class="border-bottom">
+                <div class="pt-6 pb-3 d-flex">
+                    <img class="profile-image rounded-xs me-0" src="../../../assets/employee_profile.png">
+                    <div class="ms-3">
+                        <div class="text-medium font-medium mb-n1 text-black-semibold">{{user?.name}}</div>
+                        <div class="text-muted">{{user?.email}}</div>
+                    </div>
+                    <span class="ms-auto">
+                        <svg style="height: 12px; margin:4px; cursor:pointer " (click)="userDetailsClose()"
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon icon-xs">
+                            <path fill="#fe4242"
+                                d="M318.9 243.3L457 105.2c13.7-13.7 13.7-36 0-49.7l-.5-.5c-13.7-13.7-36-13.7-49.7 0L268.7 193.1c-6.9 6.9-18.2 6.9-25.1 0L105.2 55c-13.7-13.7-36-13.7-49.7 0l-.5.5c-13.7 13.7-13.7 36 0 49.7l138.1 138.1c6.9 6.9 6.9 18.2 0 25.1L55 406.8c-13.7 13.7-13.7 36 0 49.7l.5.5c13.7 13.7 36 13.7 49.7 0l138.1-138.1c6.9-6.9 18.2-6.9 25.1 0L406.5 457c13.7 13.7 36 13.7 49.7 0l.5-.5c13.7-13.7 13.7-36 0-49.7L318.6 268.7c-6.6-7.4-6.6-18.3.3-25.4z">
+                            </path>
+                        </svg>
+                        <!-- <button type="button" class="btn-close" aria-label="Close" (click)="userDetailsClose()"></button> -->
+                    </span>
+                </div>
+                <div class="font-xs text-black-semibold pb-3">User ID: 60002180541 • Organization ID: 60002299436</div>
+                <div class="d-flex justify-content-between py-3 font-xs border-top danger text-decoration-none">
+                    <span class="changePassword" (click)="ChangePassword()">Change Password</span>
+                    <span class="signout" (click)="logout()">
+                        <img src="../../../assets/exit.png" alt="">
+                        <span>Sign Out</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- <ng-template #changePasswordContent let-modal>
+    <div class="modal-header d-flex justify-content-between">
+        <h4 class="modal-title">Modal title</h4>
+        <svg style="height: 12px; margin:4px; cursor:pointer; " (click)="modal.dismiss('Cross click')"
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon icon-xs">
+            <path fill="#fe4242"
+                d="M318.9 243.3L457 105.2c13.7-13.7 13.7-36 0-49.7l-.5-.5c-13.7-13.7-36-13.7-49.7 0L268.7 193.1c-6.9 6.9-18.2 6.9-25.1 0L105.2 55c-13.7-13.7-36-13.7-49.7 0l-.5.5c-13.7 13.7-13.7 36 0 49.7l138.1 138.1c6.9 6.9 6.9 18.2 0 25.1L55 406.8c-13.7 13.7-13.7 36 0 49.7l.5.5c13.7 13.7 36 13.7 49.7 0l138.1-138.1c6.9-6.9 18.2-6.9 25.1 0L406.5 457c13.7 13.7 36 13.7 49.7 0l.5-.5c13.7-13.7 13.7-36 0-49.7L318.6 268.7c-6.6-7.4-6.6-18.3.3-25.4z">
+            </path>
+        </svg>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="changePasswordForm" (ngSubmit)="verifyChangePassword()">
+            <div class=" form-group">
+            <label for="oldPassword">Old Password</label>
+            <input class="form-control" type="password" type="{{ oldhide ? 'password' : 'text' }}" id="oldPassword"
+                name="oldPassword" placeholder="old password" class="form-control" formControlName="oldPassword"
+                [ngClass]="{'is-invalid': changePasswordForm.get('oldPassword')?.invalid && changePasswordForm.get('oldPassword')?.touched}"
+                #oldPassword required>
+
+            <p class="eye mt-1" (click)="oldhide = !oldhide">
+                <i *ngIf="oldhide" class="fa-regular fa fa-eye-slash"></i><i *ngIf="!oldhide"
+                    class="fa-regular fa fa-eye"></i>
+            </p>
+
+            <div *ngIf="changePasswordForm.get('oldPassword')?.invalid && (changePasswordForm.get('oldPassword')?.dirty || changePasswordForm.get('oldPassword')?.touched)"
+                class="error" style="margin-top:-16px ; margin-bottom:-10px;">
+                <span *ngIf="changePasswordForm.get('oldPassword')?.errors?.['required']"> *oldPassword is
+                    required.</span>
+            </div>
+    </div>
+    <div class="form-group">
+        <label for="newPassword">New Password</label>
+        <input class="form-control" type="password" type="{{ hide ? 'password' : 'text' }}" id="newPassword" name="newPassword"
+            placeholder="new password" class="form-control" formControlName="newPassword"
+            [ngClass]="{'is-invalid': changePasswordForm.get('newPassword')?.invalid && changePasswordForm.get('newPassword')?.touched}"
+            #newPassword required (input)="onPasswordInputChange($event)" />
+
+        <p class="eye mt-1" (click)="hide = !hide">
+            <i *ngIf="hide" class="fa-regular fa fa-eye-slash"></i><i *ngIf="!hide" class="fa-regular fa fa-eye"></i>
+        </p>
+
+
+        <div *ngIf="changePasswordForm.get('newPassword')?.invalid && (changePasswordForm.get('newPassword')?.dirty || changePasswordForm.get('newPassword')?.touched)"
+            class="error" style="margin-top:-16px ; margin-bottom:-10px;">
+            <span *ngIf="changePasswordForm.get('newPassword')?.errors?.['required']"> *newPassword is required.</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="confirmPassword">Repeat New Password</label>
+        <input class="form-control" type="password" type="{{ confirmhide ? 'password' : 'text' }}" id="confirmPassword" name="confirmPassword" placeholder="confirm password" class="form-control" formControlName="confirmPassword" [ngClass]="{'is-invalid': changePasswordForm.get('confirmPassword')?.invalid && changePasswordForm.get('confirmPassword')?.touched}" required pattern="{{ newPassword.value }}"/>
+
+          <p class="eye my-1" (click)="confirmhide = !confirmhide" >
+            <i *ngIf="confirmhide" class="fa-regular fa fa-eye-slash"></i><i *ngIf="!confirmhide" class="fa-regular fa fa-eye"></i>
+          </p>
+
+          <div *ngIf="changePasswordForm.get('confirmPassword')?.invalid && (changePasswordForm.get('confirmPassword')?.dirty || changePasswordForm.get('confirmPassword')?.touched)" class="error" style="margin-top:-16px ; margin-bottom:6px;">
+            <span *ngIf="changePasswordForm.get('confirmPassword')?.errors?.['required']"> *confirmPassword is required.</span>
+          </div>
+          <div *ngIf="changePasswordForm.get('confirmPassword')?.invalid && (changePasswordForm.get('confirmPassword')?.dirty && changePasswordForm.get('confirmPassword')?.touched)" class="error mt-1">
+            <span *ngIf="changePasswordForm.get('newPassword')?.errors?.['required'] || changePasswordForm.get('confirmPassword')?.errors?.['pattern'] ">Password doesn't match.</span>
+            </div>
+          </div>
+    </form>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-secondary" (click)="modal.close('Close click')">Save Password</button>
+        <button type="submit" style="width: 190px;" class="btn" [disabled]="!isButtonClickable()" [ngClass]="{'btn-enabled': isButtonClickable(), 'btn-disabled': !isButtonClickable()}">Change Password</button>
+    </div>
+</ng-template> -->

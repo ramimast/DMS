@@ -1,0 +1,56 @@
+.column {
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: #f9f9fb !important;
+
+    .profile-image {
+        width: 11%;
+        height: 11%;
+    }
+
+    .changePassword {
+        color: #575A5E;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .signout {
+        color: #575A5E;
+        text-decoration: none;
+        cursor: pointer;
+
+        img {
+            height: 12px;
+            width: 12px;
+        }
+    }
+
+    .rounded-xs {
+        border-radius: 4px;
+    }
+
+    .text-black-semibold {
+        color: #21263c;
+    }
+
+    .text-medium {
+        font-weight: 500;
+    }
+
+    .text-muted {
+        font-size: 13px;
+    }
+
+    .font-medium {
+        font-size: 13px;
+    }
+
+    .mb-n1 {
+        margin-bottom: -2.5px !important;
+    }
+
+    .font-xs {
+        font-size: 12px;
+    }
+}
