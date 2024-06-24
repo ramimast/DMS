@@ -1,29 +1,19 @@
 <header class="header">
   <div class="header-left">
-    <img class="logo" src="./assets/Logo.png" alt="Logo">
+    <div class="align-items-center d-flex">
+      <img src="https://imast.in/assets/images/logo-2.svg" style="height: 100%;">
+    </div>
+  </div>
+  <div class="header-right flex-grow-1 ">
     <div class="search-container">
       <div class="search-input-container">
-        <input
-          type="text"
-          class="search-input"
-          placeholder="Search in Items ( / )"
-          [(ngModel)]="searchTerm"
-          (keyup.enter)="onSearch()"
-          (input)="filterItems()"
-          (focus)="showList = true"
-        />
-        <span class="material-icons search-icon" (click)="toggleList()">search</span>
+        <input type="text" class="search-input" placeholder="Search in Items ( / )" [(ngModel)]="searchTerm"
+          (keyup.enter)="onSearch()" (input)="filterItems()" (focus)="showList = true" />
+          <svg id="Search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="icon align-text-bottom search-icon" (click)="toggleList()" style="color: #000;"><path d="M15.85 15.14l-4.59-4.59a6.365 6.365 0 001.54-4.16C12.8 2.87 9.93 0 6.4 0S0 2.87 0 6.4s2.87 6.4 6.4 6.4c1.59 0 3.04-.58 4.16-1.54l4.59 4.59a.485.485 0 00.7 0c.2-.2.2-.51 0-.71zM1 6.4C1 3.42 3.42 1 6.4 1s5.4 2.42 5.4 5.4-2.42 5.4-5.4 5.4S1 9.38 1 6.4z"></path></svg>
         <img class="arrow" src="./assets/arrow.png" alt="Arrow" (click)="toggleList()" />
       </div>
     </div>
-  </div>
-  <div class="header-right">
-    <button class="icon-button">
-      <span class="material-icons">notifications</span>
-    </button>
-    <div class="user-menu">
-      <img class="user-avatar" src="src/assets/Logo.png" alt="User Avatar">
-    </div>
+   
   </div>
 </header>
 
@@ -31,7 +21,19 @@
 <div class="dropdown-wrapper" *ngIf="showList">
   <div class="search-list">
     <ul>
-      <li *ngFor="let item of filteredItems" (click)="selectItem(item)">{{ item }}</li>
+      <li *ngFor="let item of filteredItems" (click)="selectItem(item)" [class.selected]="selectedItem === item">
+        {{ item }}
+        <img *ngIf="searchTerm === item" class="correct" src="./assets/correct.png" alt="correct">
+      </li>
     </ul>
   </div>
+  <div class="advanced-search-container">
+    <li class="advanced-search-option" (click)="openAdvancedSearchPopup()">
+      <span class="material-icons">search</span>
+      Advanced Search
+      <span class="shortcut">Alt /</span>
+    </li>
+  </div>
 </div>
+<app-advanced-search-popup *ngIf="showAdvancedSearchPopup"
+  (closePopupEvent)="closeAdvancedSearchPopup()"></app-advanced-search-popup>

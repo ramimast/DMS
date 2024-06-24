@@ -37,3 +37,8 @@ $DMS_project-theme: mat.define-light-theme((
 /* You can add global styles to this file, and also import other style files */
 
 /* Importing Bootstrap SCSS file. */
+svg.icon{
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}

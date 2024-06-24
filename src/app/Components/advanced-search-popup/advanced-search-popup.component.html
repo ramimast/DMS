@@ -1,0 +1,32 @@
+<div class="popup-overlay" (click)="closePopup()"></div>
+<div class="popup-content">
+  <div class="popup-header">
+    <div class="search-container">
+      <div class="search-input-container">
+        <span class="text search">Search</span>
+        <input id="search-input" type="text" class="search-input" placeholder="" [(ngModel)]="searchTerm"
+          (focus)="showItemList(false)" />
+        <svg class="arrow" [class.arrow-down]="showList" (click)="toggleList()" xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24" height="10" fill="#838195">
+          <path d="M7 10l5 5 5-5z" />
+        </svg>
+      </div>
+    </div>
+    <button class="close-button" (click)="closePopup()">&times;</button>
+  </div>
+  <div class="dropdown-wrapper" *ngIf="showList">
+    <div class="item-list">
+      <ul>
+        <input id="search-input" type="text" class="search-input_text" placeholder="Search" (input)="onSearch()"
+          [(ngModel)]="searchTerm" />
+        <li *ngIf="filteredItems.length === 0">No results found</li>
+        <li *ngFor="let item of filteredItems">
+          <a class="dropdown-item" href="#" (click)="selectItem(item)">{{ item }}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div *ngIf="selectedItem" class="item-component" >
+    <app-items></app-items>
+  </div>
+</div>

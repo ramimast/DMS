@@ -1,0 +1,147 @@
+.sidebar {
+  width: 200px;
+  height: 100vh !important;
+  background-color: #f8f9fa;
+  color: white;
+  position: fixed;
+  transition: width 0.3s;
+  box-sizing: border-box;
+  margin-left: -9px;
+  overflow-x: hidden;
+}
+.tab-menu {
+  margin: 2px;
+  padding-top: 65px;
+  width: 200px; 
+  padding-bottom: 75px;
+  flex-direction: column !important;
+
+}
+
+.main-nav{
+  height: 86vh !important;
+  overflow: scroll !important;
+}
+
+.sidebar.closed {
+  width: 60px;
+}
+
+.toggle-btn {
+  background-color: #eaeef6;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  bottom: 30px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul li {
+  align-items: center;
+  padding: 10px;
+  text-align: left;
+  cursor: pointer;
+  margin-top: 3px;
+}
+
+.nav:hover {
+  // background-color: #dee2ea;
+  background-color: #eaeef6;
+}
+
+.nav {
+  padding: 8px;
+  margin-left: 3px;
+  border-radius: 5px;
+}
+
+.home-hover:hover {
+  background-color: #eaeef6;
+}
+
+ul li a {
+  color: black;
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+ul li img {
+  width: 24px;
+  height: 24px;
+}
+
+.sidebar.closed ul li a {
+  display: none;
+}
+
+.sidebar.closed ul li img {
+  margin: 0 auto;
+}
+
+.sub-menu {
+  list-style-type: none;
+  margin-left: 20px;
+  margin-top: 8px;
+}
+
+.sub-menu li {
+  padding: 5px 0;
+  margin-bottom: 10px;
+}
+
+.menu-item {
+  position: sticky
+}
+
+.menu-item a::after {
+  position: absolute;
+  right: 10px;
+  font-size: 7px;
+}
+
+.menu-item.expanded a::after {
+  content: '▲';
+}
+
+.items-link {
+  display: table-caption;
+  align-items: center;
+}
+
+.items-link .menu-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  position: absolute;
+  right:10px;
+}
+
+.items-link .menu-icon .icon {
+  width: 16px;
+  height: 16px;
+  text-align: right;
+}
+
+// .collapsed-expand{
+//   background-color: #6485a5;
+//   width: 100%;
+//   text-align: center;
+//   cursor: pointer;
+//   bottom: 30px;
+// }
+
+// .expand-sidebar{
+//   cursor: pointer;
+//   left: 93px;
+//   position: fixed;
+//   color: #333;
+// }
+
+// .items-link:hover {
+//   background-color: #499cee;
+//   color: #000;
+// }

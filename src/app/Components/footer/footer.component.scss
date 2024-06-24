@@ -1,0 +1,24 @@
+.foot {
+    // bottom: 0;
+    // left: 0;
+    width: 100%; 
+    background-color: #f0f0f0; /* Customize your background color */
+    // padding: px; 
+    // padding: 0!important;
+    // margin: 0!important;
+    height: 25px;
+    align-items: center;
+    text-align: center; /* Center content horizontally */
+    z-index: 1000;  /* Ensure it stays on top of other elements */
+  }
+  .text-muted{
+    font-size: .875rem !important;
+  }
+  .link{
+    text-decoration: none;
+  }
+  
+//   .container {
+//     max-width: 960px; 
+//     margin: 0 auto;
+//   }

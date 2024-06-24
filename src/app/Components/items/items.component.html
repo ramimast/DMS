@@ -1,0 +1,117 @@
+<div class="item-form-container">
+  <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="itemName">Item Name</label>
+        <input id="itemName" type="text" formControlName="itemName" class="form-control" />
+        <div *ngIf="itemForm.get('itemName')?.invalid && itemForm.get('itemName')?.touched" class="error">
+          Item Name is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="sku">SKU</label>
+        <input id="sku" type="text" formControlName="sku" class="form-control" />
+        <div *ngIf="itemForm.get('sku')?.invalid && itemForm.get('sku')?.touched" class="error">
+          SKU is required
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input id="description" formControlName="description" class="form-control"/>
+        <div *ngIf="itemForm.get('description')?.invalid && itemForm.get('description')?.touched" class="error">
+          Description is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="rate">Rate</label>
+        <input id="rate" type="text" formControlName="rate" class="form-control" />
+        <div *ngIf="itemForm.get('rate')?.invalid && itemForm.get('rate')?.touched" class="error">
+          Rate is required
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="status">Status</label>
+        <select id="status" formControlName="status" class="form-control">
+          <option value="all">All</option>
+          <option value="active">Active</option>
+          <option value="inactive">Inactive</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="taxes">Taxes</label>
+        <input id="taxes-search-input" type="text" class="search-input" [(ngModel)]="searchTerm"
+          (focus)="showItemList(true)" />
+        <div class="dropdown-wrapper" *ngIf="showList">
+          <div class="item-list">
+            <ul>
+              <input type="text" class="search-input_text" placeholder="Search" (input)="onSearch()"
+                [(ngModel)]="searchTerm" />
+              <li *ngIf="filteredItems.length === 0">No results found</li>
+              <li *ngFor="let item of filteredItems">
+                <a class="dropdown-item" href="#" (click)="selectItem(item)">{{ item }}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="sales">Sales Account</label>
+        <input id="sales-search-input" type="text" class="search-input" [(ngModel)]="searchSalesTerm"
+          (focus)="displaySalesList(true)" />
+        <div class="dropdown-wrapper" *ngIf="showSalesDropdown">
+          <div class="item-list">
+            <ul>
+              <input type="text" class="search-input_text" placeholder="Search"
+                (input)="onSalesSearch()" [(ngModel)]="searchSalesTerm" />
+              <li *ngIf="filteredSalesItems.length === 0">No results found</li>
+              <li *ngFor="let item of filteredSalesItems">
+                <a class="dropdown-item" href="#" (click)="selectSalesItem(item)">{{ item }}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="purchase">Purchase Account</label>
+        <input id="purchase-search-input" type="text" class="search-input" [(ngModel)]="searchPurchaseTerm"
+          (focus)="displayPurchaseList(true)" />
+        <div class="dropdown-wrapper" *ngIf="showPurchaseDropdown">
+          <div class="item-list">
+            <ul>
+              <input type="text" class="search-input_text" placeholder="Search"
+                (input)="onPurchaseSearch()" [(ngModel)]="searchPurchaseTerm" />
+              <li *ngIf="filteredPurchaseItems.length === 0">No results found</li>
+              <li *ngFor="let item of filteredPurchaseItems">
+                <a class="dropdown-item" href="#" (click)="selectPurchaseItem(item)">{{ item }}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <label (click)="toggleShowMore()" class="show">{{ showMore ? 'Show less' : 'Show more' }}</label>
+      <div *ngIf="showMore">
+        <input type="text" id="item-code" formControlName="itemCode" placeholder="Enter item code" class="form-control">
+      </div>
+    </div>
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary" [disabled]="itemForm.invalid">SEARCH</button>
+      <button type="button" class="btn btn-secondary" (click)="onCancel()">CANCEL</button>
+    </div>
+  </form>
+</div>
