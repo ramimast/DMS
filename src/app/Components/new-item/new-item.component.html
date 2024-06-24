@@ -1,0 +1,421 @@
+<!-- <main class="product-content-container"> -->
+    <div class="column">
+        <div class="header">
+            <h3 class="float-start"><!----> New Item</h3> <span class="close-details"
+                routerLink="/items"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0"
+                    viewBox="0 0 512 512" xml:space="preserve" class="icon icon-sm">
+                    <path
+                        d="M455.2 9.2L256 208.4 56.8 9.2C44.5-3.1 24.6-3.1 12.2 9.2l-2.9 2.9C-3 24.4-3 44.4 9.3 56.7L208.4 256 9.2 455.2c-12.3 12.3-12.3 32.3 0 44.6l2.9 2.9c12.3 12.3 32.3 12.3 44.6 0L256 303.6l199.2 199.2c12.3 12.3 32.3 12.3 44.6 0l2.9-2.9c12.3-12.3 12.3-32.3 0-44.6L303.6 256 502.8 56.8c12.3-12.3 12.3-32.3 0-44.6l-2.9-2.9c-12.5-12.4-32.4-12.4-44.7-.1z">
+                    </path>
+                </svg></span>
+        </div>
+        <div class="scroll-y noscroll-x body scrollbox" id="style-1"><!---->
+            <form class="item-creation" autocomplete="off" #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+                <div class="primary-info">
+                    <div class="item-new">
+                        <div class="row px-3">
+                            <div class="col-lg-8">
+                                <fieldset class="form-group">
+                                    <div class="row">
+                                        <legend class="col-lg-3 pt-0 col-form-label">Type <!----></legend>
+                                        <div class="col-lg-8">
+                                            <div class="form-check form-check-inline">
+                                                <input name="productType" id="a7ab98c31" class="form-check-input"
+                                                    type="radio" value="goods" [(ngModel)]="productType">
+                                                <label class="form-check-label" for="a7ab98c31" required>Goods</label>
+                                            </div>
+                                            <!-- <div class="form-check form-check-inline"><input name="productType"
+                                                    id="ad4e0d7f7" class="ember-view form-check-input" type="radio"
+                                                    value="service"> <label class="form-check-label"
+                                                    for="ad4e0d7f7">Service</label></div> -->
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <!-- <fieldset class="form-group"> -->
+                                <div class="row form-group">
+                                    <label class="col-lg-3 col-form-label" for="name"><span class="required">Name</span>
+                                        <!----></label>
+                                    <div class="col-lg-8">
+                                        <!----><input id="name" class="form-control" type="text" [(ngModel)]="name" name="name" required>
+                                        <!---->
+                                    </div>
+                                </div>
+                                <!-- </fieldset>  -->
+                                <div class="row form-group"><label for="aliasDetail"
+                                        class="col-lg-3 col-form-label"><span>Alias/Detial</span> <!----></label>
+                                    <div class="col-lg-8"><input id="aliasDetail"
+                                            class="form-control" type="text"
+                                            [(ngModel)]="aliasDetail" name="aliasDetail" required></div>
+                                </div><!---->
+                                <div class="row form-group"><label for="category"
+                                        class="col-lg-3 col-form-label"><span>Category</span> <!----></label>
+                                    <div class="col-lg-8"><input id="category"
+                                            class="form-control" type="text"
+                                            [(ngModel)]="category" name="category" required></div>
+                                </div><!---->
+                                <div class="row form-group"><label for="subCategory"
+                                        class="col-lg-3 col-form-label"><span>Sub Category</span> <!----></label>
+                                    <div class="col-lg-8"><input id="subCategory"
+                                            class="form-control" type="text"
+                                            [(ngModel)]="subCategory" name="subCategory" required></div>
+                                </div><!---->
+                                <div class="row form-group"><label for="a67417c64"
+                                        class="col-lg-3 col-form-label"><span>SKU</span> <!----></label>
+                                    <div class="col-lg-8"><input id="a67417c64"
+                                            class="form-control" type="text"
+                                            [(ngModel)]="sku" name="sku" required></div>
+                                </div><!---->
+                                <div class="row form-group"><label class="col-lg-3 col-form-label"><span>Unit</span>
+                                        <!----></label>
+                                    <div class="col-lg-8">
+                                        <!-- <div id="ember3892" class="ember-view"> -->
+                                        <!-- <div class="ac-box"> -->
+                                        <div ngbDropdown class="dropdown">
+                                            <button type="button" class="dropdown-toggle ac-box" ngbDropdownToggle required>
+                                                {{ selectedUnits }}
+                                            </button>
+                                            <div ngbDropdownMenu id="style-1">
+                                                <input type="text" class="form-control" placeholder="Search..."
+                                                    [(ngModel)]="searchTermUnits" [ngModelOptions]="{standalone: true}" (input)="filterUnits()">
+
+                                                <ng-container *ngIf="filteredUnits.length > 0; else notFoundTemplate">
+                                                    <button type="button" class="dropdown-item"
+                                                        *ngFor="let item of filteredUnits" (click)="selectUnit(item)">
+                                                        {{ item }}
+                                                    </button>
+                                                </ng-container>
+                                                <ng-template #notFoundTemplate>
+                                                    <button type="button" class="dropdown-item" disabled
+                                                        style="height:40px;">
+                                                        Not Found
+                                                    </button>
+                                                </ng-template>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div> <!----><!----><!----><!----><!----><!----><!----><!----><!---->
+                                <div class="row form-group row-cols-auto"><label for="ac5201b92"
+                                        class="col-lg-3 col-form-label">HSN Code</label>
+                                    <div class="col-lg-8"><input id="ac5201b92"
+                                            class="form-control" type="number"
+                                            [(ngModel)]="hsnCode" name="hsnCode" required  (keypress)="onInputChange($event)"></div>
+                                </div><!---->
+                                <div class="form-group row">
+                                    <legend class="col-lg-3 pt-0 col-form-label">Tax Prefence <!----></legend>
+                                    <div class="col-lg-8">
+                                        <div class="form-check form-check-inline">
+                                            <input name="taxableType" id="taxPrefence" class="form-check-input"
+                                                type="radio" value="taxable" [(ngModel)]="TaxableType" required>
+                                            <label class="form-check-label" for="taxPrefence">Taxable</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <legend class="col-lg-3 col-form-label required">Intra State Tax Rate</legend>
+                                    <div class="col-lg-8">
+                                        <div ngbDropdown class="dropdown">
+                                            <button type="button" class="dropdown-toggle ac-box" ngbDropdownToggle>
+                                                {{ selectedIntraTaxRate }}
+                                            </button>
+
+                                            <div ngbDropdownMenu id="style-1">
+                                                <input type="text" class="form-control" placeholder="Search..."
+                                                    [(ngModel)]="searchTermIntraTaxRate"
+                                                    [ngModelOptions]="{standalone: true}"
+                                                    (input)="filterIntraTaxRate()">
+
+                                                <ng-container
+                                                    *ngIf="filteredIntraTaxRate.length > 0; else notFoundTemplate">
+                                                    <button type="button" class="dropdown-item"
+                                                        *ngFor="let item of filteredIntraTaxRate"
+                                                        (click)="selectIntraTaxRate(item)">
+                                                        {{ item }}
+                                                    </button>
+                                                </ng-container>
+
+                                                <ng-template #notFoundTemplate>
+                                                    <button type="button" class="dropdown-item" disabled
+                                                        style="height:40px;">
+                                                        Not Found
+                                                    </button>
+                                                </ng-template>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <legend class="col-lg-3 col-form-label required">Inter State Tax Rate</legend>
+                                    <div class="col-lg-8">
+                                        <div ngbDropdown class="dropdown">
+                                            <button type="button" class="dropdown-toggle ac-box" ngbDropdownToggle>
+                                                {{ selectedInterTaxRate }}
+                                            </button>
+
+                                            <div ngbDropdownMenu id="style-1">
+                                                <input type="text" class="form-control" placeholder="Search..."
+                                                    [(ngModel)]="searchTermInterTaxRate"
+                                                    [ngModelOptions]="{standalone: true}"
+                                                    (input)="filterInterTaxRate()">
+
+                                                <ng-container
+                                                    *ngIf="filteredInterTaxRate.length > 0; else notFoundTemplate">
+                                                    <button type="button" class="dropdown-item"
+                                                        *ngFor="let item of filteredInterTaxRate"
+                                                        (click)="selectInterTaxRate(item)">
+                                                        {{ item }}
+                                                    </button>
+                                                </ng-container>
+
+                                                <ng-template #notFoundTemplate>
+                                                    <button type="button" class="dropdown-item" disabled
+                                                        style="height:40px;">
+                                                        Not Found
+                                                    </button>
+                                                </ng-template>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div><!----><!----><!----><!----><!---->
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="image-upload" (click)="triggerFileInput()"
+                                    *ngIf="!imagePreview">
+                                    <div class="hv-centered">
+                                        <div>
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 472.7 386.4"
+                                                class="icon icon-35 text-grey-shaded">
+                                                <path
+                                                    d="M392 0H81C36 0 0 36 0 81v224a81 81 0 0081 81h311c44 0 81-36 81-81V81c0-45-37-81-81-81zM42 81c0-21 18-39 39-39h311c21 0 39 18 39 39v101l-112 76c-10 7-23 7-33-1l-94-66a72 72 0 00-82 1l-68 48V81zm389 224c0 22-18 39-39 39H81c-21 0-39-17-39-39v-14l92-65c10-7 24-7 34 0l94 66a71 71 0 0081 1l88-60v72z">
+                                                </path>
+                                                <path
+                                                    d="M301 83a56 56 0 100 113 56 56 0 000-113zm0 78a21 21 0 110-43 21 21 0 010 43z">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                        <div class="font-small">
+                                            <label class="text-muted drag-text">Drag image(s) here or</label> <br>
+                                            <span class="text-blue cursor-pointer">Browse images</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div *ngIf="imagePreview" class="text-center">
+                                    <img [src]="imagePreview" alt="Image Preview" class="img-thumbnail mb-1">
+                                    <br>
+                                    <button class="btn btn-primary mx-2"
+                                        style="width: 120px; height: 30px;font-size: 13px;"
+                                        (click)="triggerFileInput($event)">Change Image</button>
+                                    <button class="btn btn-danger mx-2"
+                                        style="width: 70px; height: 30px; font-size: 13px;"
+                                        (click)="deleteImage($event)">Delete</button>
+                                </div>
+                                <input type="file" #fileInput (change)="onFileChange($event)" accept="image/*"
+                                    style="display:none">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <!-- style="width: 70px; height: 30px; font-size: 13px;"  style="width: 120px; height: 30px;font-size: 13px;"-->
+
+                <div class="zb-txn-form item-new">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="form-group d-flex">
+                                <div class="form-check form-check-inline ">
+                                    <input id="salesInfo" class="form-check-input"
+                                        type="checkbox" [(ngModel)]="isSalesInfoChecked" (change)="toggleInput()"
+                                        [ngModelOptions]="{standalone: true}">
+                                    <label class="form-check-label fs-6" for="salesInfo">Sales Information</label>
+                                </div>
+                            </div>
+                            <div class="row form-group my-3">
+                                <label class="col-form-label col-lg-4">
+                                    <span class="text-dashed-underline" id="sellingPrice">
+                                        <span class="required">Selling Price</span>
+                                    </span>
+                                </label>
+                                <div class="col-lg-8">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">INR</span>
+                                        </div>
+                                        <input id="sellingPrice"
+                                            class="form-control" type="number"
+                                            [disabled]="!isSalesInfoChecked" [(ngModel)]="salesPrice"
+                                            [ngModelOptions]="{standalone: true}" (keypress)="onInputChange($event)">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row form-group my-3">
+                                <label class="col-form-label col-lg-4">
+                                    <span class="text-dashed-underline" id="orderQunatity">
+                                        <span class="required">MOQ</span>
+                                        <p style="font-size: 10px; font-style: italic; color: rgb(140, 142, 143);">
+                                            Minimum Order Quantity</p>
+                                    </span>
+                                </label>
+                                <div class="col-lg-8">
+                                    <div class="form-group">
+                                        <input id="orderQunatity"
+                                            class="form-control" type="number"
+                                            [disabled]="!isSalesInfoChecked" [(ngModel)]="minimumOrderQuantitySales"
+                                            [ngModelOptions]="{standalone: true}" (keypress)="onInputChange($event)">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 ms-5">
+                            <div class="form-group d-flex">
+                                <div class="form-check form-check-inline fs-6">
+                                    <input id="purchaseInfo" class="form-check-input"
+                                        type="checkbox" [(ngModel)]="isPurchaseInfoChecked" (change)="toggleInput()"
+                                        [ngModelOptions]="{standalone: true}">
+                                    <label class="form-check-label" for="purchaseInfo">Purchase Information</label>
+                                </div>
+                            </div>
+                            <div class="row form-group my-3">
+                                <label class="col-form-label col-lg-4">
+                                    <span class="text-dashed-underline" id="mrpPrice">
+                                        <span class="required">MRP Price</span>
+                                    </span>
+                                </label>
+                                <div class="col-lg-8">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">INR</span>
+                                        </div>
+                                        <input id="mrpPrice" class="form-control"
+                                            type="number" [disabled]="!isPurchaseInfoChecked" [(ngModel)]="mrpPrice"
+                                            [ngModelOptions]="{standalone: true}" (keypress)="onInputChange($event)">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row form-group my-3">
+                                <label class="col-form-label col-lg-4">
+                                    <span class="text-dashed-underline" id="purchasePrice">
+                                        <span class="required">Cost Price</span>
+                                    </span>
+                                </label>
+                                <div class="col-lg-8">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">INR</span>
+                                        </div>
+                                        <input id="purchasePrice"
+                                            class="form-control" type="number"
+                                            [disabled]="!isPurchaseInfoChecked" [(ngModel)]="purchasePrice"
+                                            [ngModelOptions]="{standalone: true}" (keypress)="onInputChange($event)">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row form-group my-3">
+                                <label class="col-form-label col-lg-4">
+                                    <span class="text-dashed-underline" id="orderQunatity">
+                                        <span class="required">MOQ</span>
+                                        <p style="font-size: 10px; font-style: italic; color: rgb(140, 142, 143);">
+                                            Minimum Order Quantity</p>
+                                    </span>
+                                </label>
+                                <div class="col-lg-8">
+                                    <div class="form-group">
+                                        <input id="orderQunatity"
+                                            class="form-control" type="number"
+                                            [disabled]="!isPurchaseInfoChecked"
+                                            [(ngModel)]="minimumOrderQuantityPurchase"
+                                            [ngModelOptions]="{standalone: true}" (keypress)="onInputChange($event)">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!----><!---->
+                    <hr>
+                    <div class="zb-txn-form item-new">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="form-group d-flex">
+                                    <div class="form-check form-check-inline ">
+                                        <input id="InventoryInfo" class="form-check-input"
+                                            type="checkbox" [(ngModel)]="isInventoryInfoChecked"
+                                            (change)="toggleInput()" [ngModelOptions]="{standalone: true}">
+                                        <label class="form-check-label fs-6" for="InventoryInfo">Inventory Replenishment
+                                            Level</label>
+                                    </div>
+                                </div>
+                                <div class="row form-group my-3">
+                                    <label class="col-form-label col-lg-4">
+                                        <span class="text-dashed-underline" id="triggerQty">
+                                            <span class="required">Trigger Qty</span>
+                                        </span>
+                                    </label>
+                                    <div class="col-lg-8">
+                                        <div class="form-group">
+                                            <input id="triggerQty"
+                                                class="form-control"
+                                                type="number" [disabled]="!isInventoryInfoChecked"
+                                                [(ngModel)]="triggerQty" [ngModelOptions]="{standalone: true}" (keypress)="onInputChange($event)">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row form-group my-3">
+                                    <label class="col-form-label col-lg-4">
+                                        <span class="text-dashed-underline" id="maxQty">
+                                            <span class="required">Max Qty</span>
+                                        </span>
+                                    </label>
+                                    <div class="col-lg-8">
+                                        <div class="form-group">
+                                            <input id="maxQty"
+                                                class="form-control"
+                                                type="number" [disabled]="!isInventoryInfoChecked" [(ngModel)]="maxQty"
+                                                [ngModelOptions]="{standalone: true}" (keypress)="onInputChange($event)">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row form-group my-3">
+                                    <label class="col-form-label col-lg-4">
+                                        <span class="text-dashed-underline" id="minQty">
+                                            <span class="required">Min Qty</span>
+                                        </span>
+                                    </label>
+                                    <div class="col-lg-8">
+                                        <div class="form-group">
+                                            <input id="minQty"
+                                                class="form-control"
+                                                type="number" [disabled]="!isInventoryInfoChecked" [(ngModel)]="minQty"
+                                                [ngModelOptions]="{standalone: true}" (keypress)="onInputChange($event)">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!----> <!----> <!---->
+                <div class="txn-creation-column">
+                    <!-- <div class="btn-toolbar fixed-actions"> -->
+                        <button class="btn btn-primary" type="submit" [disabled]="!myForm.form.valid || !selectedUnits || !selectedIntraTaxRate || !selectedInterTaxRate || !salesPrice || !minimumOrderQuantitySales || !mrpPrice || !purchasePrice || !minimumOrderQuantityPurchase || !triggerQty || !maxQty || !minQty">Save</button>
+                             <button class="btn btn-secondary" routerLink="/items">Cancel</button>
+                    </div>
+                <!-- </div> -->
+            </form>
+        </div>
+    </div> <!---->
+    <!-- <div class="column content-column d-none"> </div> -->
+<!-- </main> -->
+
+
+
+<!-- <form (ngSubmit)="onsubmit()" #myForm="ngForm">
+    <div>
+      <label for="name">Name:</label>
+      <input type="text" id="name" [(ngModel)]="formData.name" name="name" required>
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" [(ngModel)]="formData.email" name="email" required>
+    </div>
+</form>
+<button type="submit" [disabled]="!myForm.form.valid">Submit</button>
+   -->

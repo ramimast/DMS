@@ -8,6 +8,7 @@ body {
     height: 100%;
 }
 
+
 .header {
     display: flex;
     justify-content: space-between;
@@ -16,8 +17,10 @@ body {
     background-color: #21263c;
     color: white;
     height: 48px;
-    position: relative; /* Ensure relative positioning */
-    z-index: 1; /* Ensure it appears above other content */
+    position: relative;
+    /* Ensure relative positioning */
+    z-index: 1;
+    /* Ensure it appears above other content */
 }
 
 .header-left,
@@ -27,12 +30,15 @@ body {
 }
 
 .logo {
-    height: 70px;
-    margin-right: 16px;
+    // height: 80px;
+    width: 120px;
+    // 4/2
+    // margin-right: 16px;
 }
 
 .search-container {
-    position: relative; /* Needed for the absolute positioning of the dropdown */
+    position: relative;
+    /* Needed for the absolute positioning of the dropdown */
     margin-left: 60px;
 }
 
@@ -68,7 +74,7 @@ body {
     z-index: 1;
 }
 
-.search-input:focus + .search-icon {
+.search-input:focus+.search-icon {
     color: #fff;
 }
 
@@ -113,6 +119,7 @@ body {
 .user-menu {
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 .user-avatar {
@@ -154,3 +161,98 @@ body {
 .search-list li:hover {
     background-color: #f0f0f0;
 }
+
+
+.navbar .megamenu {
+    padding: 1rem;
+}
+
+/* ============ desktop view ============ */
+@media all and (min-width: 992px) {
+
+    .navbar .has-megamenu {
+        position: static !important;
+    }
+
+    .navbar .megamenu {
+        left: 5%;
+        right: 0;
+        width: 90%;
+        margin-top: 0;
+    }
+
+}
+
+/* ============ desktop view .end// ============ */
+
+
+/* ============ mobile view ============ */
+@media(max-width: 991px) {
+
+    .navbar.fixed-top .navbar-collapse,
+    .navbar.sticky-top .navbar-collapse {
+        overflow-y: auto;
+        max-height: 90vh;
+        /* margin-bottom: 10px!important; */
+    }
+}
+
+.Reports {
+    border-radius: 5px;
+    border: none;
+    font-size: 11px;
+    background: rgb(238, 124, 17);
+    margin-left: 8px;
+    padding:4px;
+    color: white;
+    // svg{
+        // }
+    }
+    
+    .dropdown-toggle.Reports::after {
+        display: none !important;
+}
+
+.col-megamenu{
+    width: 200px;
+}
+
+.dropdown-menu{
+    left: -550px !important;
+    top: 6px !important;
+    padding: 20px;
+    font-size: 12px;
+    .title{
+        font-weight: 500;
+    }
+    a{
+        color: rgb(142, 140, 150);
+        width: 180px;
+        border-radius: 5px ;
+        &:hover{
+            background-color: #f0efef;
+        }
+        &:active{
+            background-color: #bee5f7;
+        }
+    }
+}
+
+.organization{
+     cursor: pointer;
+    .truncate {
+        display: inline-block;
+        max-width: 150px; /* Adjust this value as needed */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        vertical-align: bottom;
+        color: rgb(187, 185, 192);
+        svg {
+            margin-left: 5px; /* Add some space between the email and the icon */
+            vertical-align: middle;
+          }
+      }
+
+}
+

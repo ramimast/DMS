@@ -1,0 +1,38 @@
+<div class="column">
+    <div class="notification-header border-bottom ghostwhite-bg">
+        <div class="notification-section">
+            <div class="notification-title"><span>Notifications</span>   
+                <!-- <div class="ms-3"> -->
+                    <span ngbDropdown class="dropdown">
+                        <button class="dropdown-toggle notification-filter-button" ngbDropdownToggle>{{  selectedItem?.label }}</button>
+                    <div ngbDropdownMenu>
+                        <button class="dropdown-item" *ngFor="let item of items" (click)="selectItem(item)">
+                          {{ item.label }}
+                        </button>
+                    </div>
+                </span>
+            </div>
+                
+            <!-- </div> -->
+            <span>
+                <!-- <img class="dashboard-image rounded-xs me-2" src="../../../assets/dashboard.png" alt=""> 
+                <span style="font-size: 18px;" class="me-2">|</span> -->
+                <svg style="height: 12px; margin:4px; cursor:pointer " (click)="closeNotifications()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon icon-xs"><path fill="#fe4242" d="M318.9 243.3L457 105.2c13.7-13.7 13.7-36 0-49.7l-.5-.5c-13.7-13.7-36-13.7-49.7 0L268.7 193.1c-6.9 6.9-18.2 6.9-25.1 0L105.2 55c-13.7-13.7-36-13.7-49.7 0l-.5.5c-13.7 13.7-13.7 36 0 49.7l138.1 138.1c6.9 6.9 6.9 18.2 0 25.1L55 406.8c-13.7 13.7-13.7 36 0 49.7l.5.5c13.7 13.7 36 13.7 49.7 0l138.1-138.1c6.9-6.9 18.2-6.9 25.1 0L406.5 457c13.7 13.7 36 13.7 49.7 0l.5-.5c13.7-13.7 13.7-36 0-49.7L318.6 268.7c-6.6-7.4-6.6-18.3.3-25.4z"></path></svg>
+                <!-- <button type="button" class="btn-close me-2" aria-label="Close" (click)="closeNotifications()"></button> -->
+            </span>
+        </div>
+
+    </div>
+
+
+    <div class="notification-list">
+        <div *ngIf="selectedItem?.value; else noItemsTemplate">
+            <p>{{ selectedItem?.value }}</p>
+          </div>
+          
+          <ng-template #noItemsTemplate>
+            <div class="list-item mx-6 py-5 text-center"><img src="../../../assets/letter-box.png" alt="">      <div class="font-large">Uhh... There are no notifications at the moment.</div>
+            </div>
+          </ng-template>
+    </div>
+</div>

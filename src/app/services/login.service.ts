@@ -338,7 +338,6 @@ verifyChangePassword(old_password: number, new_password:string, confirm_password
           localStorage.removeItem('access_token');
           localStorage.removeItem('refresh_token');
           localStorage.removeItem('userkey');
-          localStorage.removeItem('selectedData');
           this.router.navigate(['/login']);
           // this.isAuthenticated = false;
           console.log('log-out successful');
