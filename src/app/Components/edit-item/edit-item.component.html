@@ -1,8 +1,8 @@
 <!-- <main class="product-content-container"> -->
     <div class="column">
         <div class="header">
-            <h3 class="float-start"><!----> New Item</h3> <span class="close-details"
-                routerLink="/items"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0"
+            <h3 class="float-start"><!----> Edit Item</h3> <span class="close-details"
+                routerLink="/item-details"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0"
                     viewBox="0 0 512 512" xml:space="preserve" class="icon icon-sm">
                     <path
                         d="M455.2 9.2L256 208.4 56.8 9.2C44.5-3.1 24.6-3.1 12.2 9.2l-2.9 2.9C-3 24.4-3 44.4 9.3 56.7L208.4 256 9.2 455.2c-12.3 12.3-12.3 32.3 0 44.6l2.9 2.9c12.3 12.3 32.3 12.3 44.6 0L256 303.6l199.2 199.2c12.3 12.3 32.3 12.3 44.6 0l2.9-2.9c12.3-12.3 12.3-32.3 0-44.6L303.6 256 502.8 56.8c12.3-12.3 12.3-32.3 0-44.6l-2.9-2.9c-12.5-12.4-32.4-12.4-44.7-.1z">
@@ -36,7 +36,7 @@
                                     <label class="col-lg-3 col-form-label" for="name"><span class="required">Name</span>
                                         <!----></label>
                                     <div class="col-lg-8">
-                                        <!----><input id="name" class="form-control" type="text" [(ngModel)]="name" name="name" required>
+                                        <!----><input id="name" class="form-control" type="text" [(ngModel)]="selectedItem.name" name="name" required>
                                         <!---->
                                     </div>
                                 </div>
@@ -45,25 +45,25 @@
                                         class="col-lg-3 col-form-label"><span>Alias/Detial</span> <!----></label>
                                     <div class="col-lg-8"><input id="aliasDetail"
                                             class="form-control" type="text"
-                                            [(ngModel)]="aliasDetail" name="aliasDetail" required></div>
+                                            [(ngModel)]="selectedItem.alias_detail" name="aliasDetail" required></div>
                                 </div><!---->
                                 <div class="row form-group"><label for="category"
                                         class="col-lg-3 col-form-label"><span>Category</span> <!----></label>
                                     <div class="col-lg-8"><input id="category"
                                             class="form-control" type="text"
-                                            [(ngModel)]="category" name="category" required></div>
+                                            [(ngModel)]="selectedItem.category" name="category" required></div>
                                 </div><!---->
                                 <div class="row form-group"><label for="subCategory"
                                         class="col-lg-3 col-form-label"><span>Sub Category</span> <!----></label>
                                     <div class="col-lg-8"><input id="subCategory"
                                             class="form-control" type="text"
-                                            [(ngModel)]="subCategory" name="subCategory" required></div>
+                                            [(ngModel)]="selectedItem.sub_category" name="subCategory" required></div>
                                 </div><!---->
                                 <div class="row form-group"><label for="a67417c64"
                                         class="col-lg-3 col-form-label"><span>SKU</span> <!----></label>
                                     <div class="col-lg-8"><input id="a67417c64"
                                             class="form-control" type="text"
-                                            [(ngModel)]="sku" name="sku" required></div>
+                                            [(ngModel)]="selectedItem.sku" name="sku" required></div>
                                 </div><!---->
                                 <div class="row form-group"><label class="col-lg-3 col-form-label"><span>Unit</span>
                                         <!----></label>
@@ -99,14 +99,14 @@
                                         class="col-lg-3 col-form-label">HSN Code</label>
                                     <div class="col-lg-8"><input id="ac5201b92"
                                             class="form-control" type="number"
-                                            [(ngModel)]="hsnCode" name="hsnCode" required  (keypress)="onInputChange($event)"></div>
+                                            [(ngModel)]="selectedItem.hsn" name="hsnCode" required  (keypress)="onInputChange($event)"></div>
                                 </div><!---->
                                 <div class="form-group row">
                                     <legend class="col-lg-3 pt-0 col-form-label">Tax Prefence <!----></legend>
                                     <div class="col-lg-8">
                                         <div class="form-check form-check-inline">
                                             <input name="taxableType" id="taxPrefence" class="form-check-input"
-                                                type="radio" value="taxable" [(ngModel)]="TaxableType" required>
+                                                type="radio" value="taxable" [(ngModel)]="selectedItem.tax.tax_preference" required>
                                             <label class="form-check-label" for="taxPrefence">Taxable</label>
                                         </div>
                                     </div>
@@ -219,6 +219,8 @@
                 <hr>
                 <!-- style="width: 70px; height: 30px; font-size: 13px;"  style="width: 120px; height: 30px;font-size: 13px;"-->
 
+                
+
                 <div class="zb-txn-form item-new">
                     <div class="row">
                         <div class="col-lg-4">
@@ -242,7 +244,7 @@
                                             <span class="input-group-text">INR</span>
                                         </div>
                                         <input id="mrpPrice" class="form-control"
-                                            type="number" [disabled]="!isSalesInfoChecked" [(ngModel)]="mrpPrice"
+                                            type="number" [disabled]="!isSalesInfoChecked" [(ngModel)]="selectedItem.sales_info.mrp_price"
                                             [ngModelOptions]="{standalone: true}" (keypress)="onInputChange($event)">
                                     </div>
                                 </div>
@@ -260,7 +262,7 @@
                                         </div>
                                         <input id="sellingPrice"
                                             class="form-control" type="number"
-                                            [disabled]="!isSalesInfoChecked" [(ngModel)]="salesPrice"
+                                            [disabled]="!isSalesInfoChecked" [(ngModel)]="selectedItem.sales_info.sales_price"
                                             [ngModelOptions]="{standalone: true}" (keypress)="onInputChange($event)">
                                     </div>
                                 </div>
@@ -277,7 +279,7 @@
                                     <div class="form-group">
                                         <input id="orderQunatity"
                                             class="form-control" type="number"
-                                            [disabled]="!isSalesInfoChecked" [(ngModel)]="minimumOrderQuantitySales"
+                                            [disabled]="!isSalesInfoChecked" [(ngModel)]="selectedItem.sales_info.Minimum_order_quantity"
                                             [ngModelOptions]="{standalone: true}" (keypress)="onInputChange($event)">
                                     </div>
                                 </div>
@@ -305,7 +307,7 @@
                                         </div>
                                         <input id="purchasePrice"
                                             class="form-control" type="number"
-                                            [disabled]="!isPurchaseInfoChecked" [(ngModel)]="purchasePrice"
+                                            [disabled]="!isPurchaseInfoChecked" [(ngModel)]="selectedItem.purchase_info.cost_Price"
                                             [ngModelOptions]="{standalone: true}" (keypress)="onInputChange($event)">
                                     </div>
                                 </div>
@@ -323,7 +325,7 @@
                                         <input id="orderQunatity"
                                             class="form-control" type="number"
                                             [disabled]="!isPurchaseInfoChecked"
-                                            [(ngModel)]="minimumOrderQuantityPurchase"
+                                            [(ngModel)]="selectedItem.purchase_info.Minimum_order_quantity"
                                             [ngModelOptions]="{standalone: true}" (keypress)="onInputChange($event)">
                                     </div>
                                 </div>
@@ -354,7 +356,7 @@
                                             <input id="triggerQty"
                                                 class="form-control"
                                                 type="number" [disabled]="!isInventoryInfoChecked"
-                                                [(ngModel)]="triggerQty" [ngModelOptions]="{standalone: true}" (keypress)="onInputChange($event)">
+                                                [(ngModel)]="selectedItem.inventory_info.trigger_qty" [ngModelOptions]="{standalone: true}" (keypress)="onInputChange($event)">
                                         </div>
                                     </div>
                                 </div>
@@ -368,7 +370,7 @@
                                         <div class="form-group">
                                             <input id="maxQty"
                                                 class="form-control"
-                                                type="number" [disabled]="!isInventoryInfoChecked" [(ngModel)]="maxQty"
+                                                type="number" [disabled]="!isInventoryInfoChecked" [(ngModel)]="selectedItem.inventory_info.max_qty"
                                                 [ngModelOptions]="{standalone: true}" (keypress)="onInputChange($event)">
                                         </div>
                                     </div>
@@ -383,7 +385,7 @@
                                         <div class="form-group">
                                             <input id="minQty"
                                                 class="form-control"
-                                                type="number" [disabled]="!isInventoryInfoChecked" [(ngModel)]="minQty"
+                                                type="number" [disabled]="!isInventoryInfoChecked" [(ngModel)]="selectedItem.inventory_info.min_qty"
                                                 [ngModelOptions]="{standalone: true}" (keypress)="onInputChange($event)">
                                         </div>
                                     </div>
@@ -392,11 +394,11 @@
                         </div>
                     </div>
                 </div>
-                <!----> <!----> <!---->
-                <div class="txn-creation-column">
-                        <button class="btn btn-primary" type="submit" [disabled]="!myForm.form.valid || !selectedUnits || !selectedIntraTaxRate || !selectedInterTaxRate || !salesPrice || !minimumOrderQuantitySales || !mrpPrice || !purchasePrice || !minimumOrderQuantityPurchase || !triggerQty || !maxQty || !minQty">Save</button>
-                             <button class="btn btn-secondary" routerLink="/items">Cancel</button>
+                     <div class="txn-creation-column">
+                        <button class="btn btn-primary" type="submit" [disabled]="!myForm.form.valid || !selectedUnits || !selectedIntraTaxRate || !selectedInterTaxRate || !selectedItem.sales_info.mrp_price || !selectedItem.sales_info.sales_price || !selectedItem.sales_info.Minimum_order_quantity || !selectedItem.purchase_info.cost_Price || !selectedItem.purchase_info.Minimum_order_quantity || !selectedItem.inventory_info.trigger_qty || !selectedItem.inventory_info.max_qty || !selectedItem.inventory_info.min_qty">Save</button>
+                             <button class="btn btn-secondary">Cancel</button>
                     </div>
             </form>
         </div>
     </div>
+    

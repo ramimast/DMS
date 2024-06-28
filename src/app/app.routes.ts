@@ -8,6 +8,7 @@ import { authenticatedGuard } from './authenticated.guard';
 import { ItemsComponent } from './pages/items/items.component';
 import { NewItemComponent } from './components/new-item/new-item.component';
 import { ItemDetailsComponent } from './components/item-details/item-details.component';
+import { EditItemComponent } from './components/edit-item/edit-item.component';
 
 export const routes: Routes = [
     { path:'login',component:LoginComponent, canActivate: [authenticatedGuard]},
@@ -20,6 +21,7 @@ export const routes: Routes = [
             { path: 'items', component: ItemsComponent, canActivate: [authGuard] },
             { path: 'item-details', component: ItemDetailsComponent, canActivate: [authGuard] },
             { path: 'new-item', component: NewItemComponent, canActivate: [authGuard] },
+            { path: 'edit-item', component: EditItemComponent, canActivate: [authGuard] },
             { path: '', redirectTo: '/home', pathMatch: 'full' },
         ],
     },

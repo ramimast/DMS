@@ -3,7 +3,10 @@ import { ItemsService } from '../../services/items.service';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { ItemOverviewComponent } from '../item-overview/item-overview.component';
+import { TransactionsComponent } from '../transactions/transactions.component';
+import { HistoryComponent } from '../history/history.component';
 
 interface DropdownItem {
   label: string;
@@ -13,7 +16,7 @@ interface DropdownItem {
 @Component({
   selector: 'app-item-details',
   standalone: true,
-  imports: [NgbModule, CommonModule, FormsModule, RouterLink],
+  imports: [NgbModule, CommonModule, FormsModule, RouterLink, NgbTooltipModule, ItemOverviewComponent, TransactionsComponent, HistoryComponent],
   templateUrl: './item-details.component.html',
   styleUrl: './item-details.component.scss'
 })
@@ -24,7 +27,7 @@ export class ItemDetailsComponent {
   ngOnInit(): void {
     this.fetchData();
     this.selectedItemfilter = this.items[0];
-    localStorage.removeItem('selectedItem');
+    // localStorage.removeItem('selectedItem');
     
     this.itemsService.selectedItem$.subscribe(item => {
       this.selectedItem = item;
@@ -115,13 +118,28 @@ export class ItemDetailsComponent {
   onRowClick(item: any) {
     this.itemsService.setSelectedItem(item);
     // console.log('Item clicked:', item);
-    this.router.navigateByUrl('item-details');
+    // this.router.navigateByUrl('item-details');
   }
 
+  unselectedname(){
+    // this.selectedName = false;
+    this.router.navigate(['/items']);
+    localStorage.removeItem('selectedItem');
+  }
 
-
+  activeTab = 'tab1';
   
+  changeTab(tab: string): void {
+    this.activeTab = tab;
+  }
+  
+
+  goToEditItem(){
+    this.router.navigate(['/edit-item'], { state: { selectedItem: this.selectedItem } });
+  }
 // <div *ngIf="selectedItem">
 // <h1>{{selectedItem.name}}</h1>
 // </div>
+
+
 }

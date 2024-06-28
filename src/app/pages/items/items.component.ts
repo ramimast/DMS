@@ -41,10 +41,17 @@ export class ItemsComponent implements OnInit {
 
   constructor(private itemsService: ItemsService, private router: Router) {}
 
+  selectedItem:any;
   ngOnInit(): void {
     this.fetchData();
     this.selectedItemfilter = this.items[0];
     localStorage.removeItem('selectedItem');
+
+    this.itemsService.selectedItem$.subscribe(item => {
+      this.selectedItem = item;
+      console.log('Received selected item:', this.selectedItem);  // Debugging log
+    });
+  
   }
 
   fetchData(): void {
@@ -105,9 +112,11 @@ export class ItemsComponent implements OnInit {
     return this.filteredData.length;
   }
 
+
   onRowClick(item: any) {
     this.itemsService.setSelectedItem(item);
     // console.log('Item clicked:', item);
-    this.router.navigateByUrl('item-details');
+    this.router.navigateByUrl('/item-details');
   }
+  
 }

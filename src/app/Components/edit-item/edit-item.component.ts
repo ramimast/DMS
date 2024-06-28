@@ -1,37 +1,26 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild  } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ItemsService } from '../../services/items.service';
 
 @Component({
-  selector: 'app-new-item',
+  selector: 'app-edit-item',
   standalone: true,
   imports: [CommonModule, FormsModule, NgbModule, RouterLink],
-  templateUrl: './new-item.component.html',
-  styleUrl: './new-item.component.scss'
+  templateUrl: './edit-item.component.html',
+  styleUrl: './edit-item.component.scss'
 })
-export class NewItemComponent {
-
-  // formData = {
-  //   name: '',
-  //   email: ''
-  // };
-
-  // onsubmit() {
-  //   console.log('Form Submitted!', this.formData);
-  //   // Here you can handle form submission, e.g., send data to a server
-  // }
-  // constructor(){}
+export class EditItemComponent {
 
   isSalesInfoChecked: boolean = true; // Checkbox is checked by default
   salesPrice: string = '' ;
-  mrpPrice: string = '';
   minimumOrderQuantitySales:string = '' ;
 
   isPurchaseInfoChecked:boolean = true;
   purchasePrice: string = '';
+  mrpPrice: string = '';
   minimumOrderQuantityPurchase!:number;
 
   isInventoryInfoChecked:boolean = true;
@@ -76,11 +65,21 @@ export class NewItemComponent {
   selectedUnits: string = '';
   searchTermUnits: string = '';
   filteredUnits: string[] = this.units;
+  selectedItem:any;
   
-  constructor(private itemsSerivce: ItemsService) {
+  constructor(private itemsSerivce: ItemsService, private router: Router) {
     this.filteredUnits = this.units;  // Initialize filteredItems with all items
     this.filteredIntraTaxRate = this.IntraTaxRate;  // Initialize filteredItems with all items
     this.filteredInterTaxRate = this.InterTaxRate;
+
+    const navigation = this.router.getCurrentNavigation();
+    if (navigation?.extras.state) {
+      this.selectedItem = navigation.extras.state['selectedItem'];
+      this.selectedUnits = this.selectedItem.unit;
+      this.imagePreview = this.selectedItem.imageUrl;
+      this.selectedIntraTaxRate = this.selectedItem.tax.intra_state_tax_rate
+      this.selectedInterTaxRate = this.selectedItem.tax.inter_state_tax_rate
+    }
   }
 
   filterUnits() {
@@ -178,41 +177,18 @@ export class NewItemComponent {
   }
   
   onSubmit(form:any) {
-    debugger
+    // debugger
     if(form.valid){
-      console.log('onSubmit method called');
-      const newItem = {
-        name: this.name,
-        alias_detail: this.aliasDetail,
-        category: this.category,
-        sub_category: this.subCategory,
-        sku: this.sku,
-        unit: this.selectedUnits,
-        hsn: this.hsnCode,
-        imageUrl: this.imagePreview,
-        tax: {
-          tax_preference: this.TaxableType,
-          intra_state_tax_rate: this.selectedIntraTaxRate,
-          inter_state_tax_rate: this.selectedInterTaxRate
-        },
-        purchase_info: {
-          cost_Price: this.purchasePrice,
-          Minimum_order_quantity: this.minimumOrderQuantityPurchase
-        },
-        sales_info: {
-          mrp_price: this.mrpPrice,
-          sales_price: this.salesPrice,
-          Minimum_order_quantity: this.minimumOrderQuantitySales
-        },
-        inventory_info: {
-          trigger_qty: this.triggerQty,
-          max_qty: this.maxQty,
-          min_qty: this.minQty
-        }
-      };
-      this.itemsSerivce.addItem(newItem).subscribe(response => {
-        console.log('Item added:', response);
+      this.selectedItem.unit = this.selectedUnits;
+      this.selectedItem.imageUrl = this.imagePreview;
+      
+      this.selectedItem.tax.intra_state_tax_rate = this.selectedIntraTaxRate
+      this.selectedItem.tax.inter_state_tax_rate = this.selectedInterTaxRate
+      this.itemsSerivce.updateItem(this.selectedItem).subscribe(response => {
+        console.log('Item updated:', response);
+        this.router.navigate(['/item-details'], { state: { selectedItem: response } });
       });
+      // this.router.navigate(['/item-details'], { state: { selectedItem: this.selectedItem } });
     }else{
       console.log("form is not valid");
     }

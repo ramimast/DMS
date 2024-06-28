@@ -1,0 +1,86 @@
+<div class="item-details-page" id="style-1"><!---->
+    <div class="row px-3">
+        <div class="col-lg-8 col-md-8 col-sm-8 col-8"><!---->
+            <div class="group pb-3"><!---->
+                <div class="row"><label class="col-lg-3 items-label">Name</label> <label
+                        class="col-lg-7">{{selectedItem.name}}</label></div><!----><!----><!---->
+            </div>
+            <div class="group"><!----><!----><!---->
+                <div class="row"><label class="col-lg-3 items-label">Alias/Detail</label> <label
+                        class="col-lg-7">{{selectedItem.alias_detail}}</label></div>
+                <!----><!----><!----><!----><!----><!----><!----> <!---->
+                <!----> <!----><!---->
+                <div class="row"><label class="col-lg-3 items-label">Category</label> <label
+                        class="col-lg-7">{{selectedItem.category}}</label></div>
+                <!----><!----><!----><!----><!----><!----><!----> <!---->
+                <!----> <!----><!---->
+                <div class="row"><label class="col-lg-3 items-label">Sub Category</label> <label
+                        class="col-lg-7">{{selectedItem.sub_category}}</label></div>
+                <!----><!----><!----><!----><!----><!----><!----> <!---->
+                <!----> <!----><!---->
+                <div class="row"><label class="col-lg-3 items-label">SKU</label> <label
+                        class="col-lg-7">{{selectedItem.sku}}</label></div>
+                <!----><!----><!----><!----><!----><!----><!----> <!---->
+                <!----> <!----><!---->
+                <div class="row"><label class="col-lg-3 items-label">Unit</label> <label
+                        class="col-lg-7">{{selectedItem.unit}}</label></div>
+                <!----><!----><!----><!----><!----><!----><!----> <!---->
+                <!----> <!----><!---->
+                <div class="row"><label class="col-lg-3 items-label">HSN Code</label> <label
+                        class="col-lg-7">{{selectedItem.hsn}}</label></div>
+                <!----><!----><!----><!----><!----><!----><!----> <!---->
+                <!----> <!----><!---->
+                <div class="row"><label class="items-label col-lg-3 col-md-3 col-sm-3 col-3">Tax Preference</label>
+                    <label class="col-lg-6 col-md-6 col-sm-6 col-6">{{selectedItem.tax.tax_preference}}</label>
+                </div> <!----><!---->
+                <div class="row"><label class="col-lg-3 items-label">Intra State Tax Rate</label> <label
+                        class="col-lg-6">{{selectedItem.tax.intra_state_tax_rate}}</label></div>
+                <div class="row"><label class="col-lg-3 items-label">Inter State Tax Rate</label> <label
+                        class="col-lg-6">{{selectedItem.tax.inter_state_tax_rate}}</label></div><!----><!---->
+            </div> <!----><!----><!----><label class="pb-3 font-medium">Purchase Information</label>
+            <div class="group">
+                <div class="row"><label class="col-lg-3 items-label">Cost Price</label> <label
+                        class="col-lg-9">{{selectedItem.purchase_info.cost_Price}}</label></div>
+                <div class="row"><label class="col-lg-3 items-label"> <span>MCQ</span>
+                        <p style="font-size: 10px; font-style: italic; color: rgb(140, 142, 143);">
+                            Minimum Order Quantity</p>
+                    </label> <label class="col-lg-9">{{selectedItem.purchase_info.Minimum_order_quantity}}</label></div>
+                <!----><!----><!---->
+            </div>
+            <label class="pb-3 font-medium">Sales Information</label>
+            <div class="group">
+                <div class="row"><label class="col-lg-3 items-label">MRP Price</label> <label
+                        class="col-lg-9">{{selectedItem.sales_info.mrp_price}}</label></div> <!---->
+                <div class="row"><label class="col-lg-3 items-label">Sale Price</label> <label
+                        class="col-lg-9">{{selectedItem.sales_info.sales_price}}</label></div> <!---->
+                <div class="row"><label class="col-lg-3 items-label"> <span>MCQ</span>
+                        <p style="font-size: 10px; font-style: italic; color: rgb(140, 142, 143);">
+                            Minimum Order Quantity</p>
+                    </label> <label class="col-lg-9">{{selectedItem.sales_info.Minimum_order_quantity}}</label>
+                </div>
+                <!----><!----><!---->
+            </div><!----> <!----> <!----> <!----> <!----><!----><!---->
+            <label class="pb-3 font-medium"> Inventory Replenishment Level
+            </label>
+            <div class="group">
+                <div class="row"><label class="col-lg-3 items-label">Trigger Qty</label> <label
+                        class="col-lg-9">{{selectedItem.inventory_info.trigger_qty}}</label></div> <!---->
+                <div class="row"><label class="col-lg-3 items-label">Max Qty</label> <label
+                        class="col-lg-9">{{selectedItem.inventory_info.max_qty}}</label></div> <!---->
+                <div class="row"><label class="col-lg-3 items-label">Min Qty</label> <label
+                        class="col-lg-9">{{selectedItem.inventory_info.min_qty}}</label></div> <!---->
+                
+                <!----><!----><!---->
+            </div><!----> <!----> <!----> <!----> <!----><!----><!---->
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-4" style="padding-top: 7px;">
+
+            <div class="item-details-image-container">
+                <img *ngIf="selectedItem.imageUrl" [src]="selectedItem.imageUrl" alt="No Image Found"
+                    class="item-details-image" />
+                <p class="noImageMessage" *ngIf="!selectedItem.imageUrl">No Image Found</p>
+            </div>
+
+        </div>
+    </div>
+</div>

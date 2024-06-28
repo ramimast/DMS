@@ -1,4 +1,4 @@
-<main class="product-content-container">
+<main class="product-content-container" >
     <div class="column">
         <div class="items-header border-bottom">
             <div class="items-section">
@@ -39,7 +39,7 @@
                             <circle cx="12" cy="19" r="2.5" fill="currentColor" />
                         </svg>
 
-                        <div ngbDropdownMenu>
+                        <div ngbDropdownMenu >
                             <button class="dropdown-item" style="font-size: 15px;">Export</button>
                         </div>
                     </button>
@@ -139,136 +139,65 @@
             </ng-template>
         </div>
     </div>
-    <div class="column content-column" id="item-details-content">
-        <div class="header d-flex no-border  details-actions-header">
-            <h3 class="over-flow header-title "><span>10A ONE WAY SWITCH</span> <!----><!----></h3> <!---->
-            <div class="btn-toolbar">
-                <div class="btn-group"><button class="icon-button btn btn-secondary" id="a739c0e85" type="button"
-                        data-ember-action="" data-ember-action-809="809"><svg id="Layer_2"
-                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 510 512"
-                            class="icon icon-sm align-text-bottom" aria-hidden="true">
-                            <g id="Layer_2-2">
-                                <path
-                                    d="M50.3 512c-13.04 0-25.74-5.08-35.2-14.35C3.47 486.27-1.93 469.88.64 453.82l16.9-105.61c3.01-18.79 11.71-35.82 25.17-49.27l272.83-272.7c35.01-34.99 91.99-34.98 127.01.02l41.14 41.12c16.96 16.96 26.31 39.5 26.32 63.47 0 23.98-9.33 46.52-26.29 63.47L210.3 467.59c-12.98 12.98-29.4 21.57-47.47 24.84L59.23 511.2c-2.97.54-5.96.8-8.93.8zM379.02 39.99c-12.74 0-25.48 4.85-35.18 14.54L71 327.23c-7.46 7.45-12.28 16.9-13.95 27.31l-16.9 105.61c-.73 4.55 1.54 7.55 2.95 8.93 1.41 1.38 4.46 3.58 8.99 2.76l103.6-18.77A49.498 49.498 0 00182 439.3l273.4-273.27c9.4-9.39 14.57-21.89 14.57-35.18s-5.19-25.79-14.59-35.19l-41.14-41.12c-9.71-9.71-22.47-14.56-35.22-14.56z">
-                                </path>
-                                <path transform="rotate(-45.01 331.896 178.02)" d="M311.84 79.14h40.01v197.75h-40.01z">
-                                </path>
-                            </g>
-                        </svg></button> <!----></div>
-                <div class="btn-group"><!----></div> <!----><!----> <!---->
-                <div id="ember810" class="dropdown ember-view btn-group"><button id="ember811"
-                        class="dropdown-toggle ember-view btn btn-secondary">More <!----></button>
-                    <div class="dropdown-menu  dropdown-menu-right multi-level"><button class="dropdown-item"
-                            type="button" data-ember-action="" data-ember-action-812="812">Clone Item</button><!---->
-                        <button class="dropdown-item" type="button" data-ember-action=""
-                            data-ember-action-813="813">Mark as Inactive</button><button class="dropdown-item"
-                            type="button" data-ember-action="" data-ember-action-814="814">Delete</button>
-                    </div>
-                </div> <button class="icon-button close-entity close-details ms-4" type="button" data-ember-action=""
-                    data-ember-action-815="815"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0"
-                        y="0" viewBox="0 0 512 512" xml:space="preserve" class="icon icon-sm align-text-bottom"
-                        aria-hidden="true">
-                        <path
-                            d="M455.2 9.2L256 208.4 56.8 9.2C44.5-3.1 24.6-3.1 12.2 9.2l-2.9 2.9C-3 24.4-3 44.4 9.3 56.7L208.4 256 9.2 455.2c-12.3 12.3-12.3 32.3 0 44.6l2.9 2.9c12.3 12.3 32.3 12.3 44.6 0L256 303.6l199.2 199.2c12.3 12.3 32.3 12.3 44.6 0l2.9-2.9c12.3-12.3 12.3-32.3 0-44.6L303.6 256 502.8 56.8c12.3-12.3 12.3-32.3 0-44.6l-2.9-2.9c-12.5-12.4-32.4-12.4-44.7-.1z">
-                        </path>
-                    </svg></button>
+    <div class="content-column">
+        <div class="header mt-1">
+            <div class="item-name">
+                <!-- <span style="display: block;"> Customer Type:{{selectedRow.OtherDetails.CustomerType}}</span> -->
+                <h6 style="font-size: 18px; font-weight: 400;">
+                    {{selectedItem.name}}
+                </h6>
             </div>
-        </div> <!---->
-        <div class="sub-tab details-sub-tab position-relative">
-            <ul class="nav nav-tabs nav-tabs-dashed">
-                <li id="ember816" class="active ember-view nav-item"><a id="ember817" class="ember-view active nav-link"
-                        href="#/inventory/items/169926000002258693?filter_by=Status.All&amp;per_page=50&amp;sort_column=name&amp;sort_order=A">Overview</a>
-                </li> <!----><!----><!---->
-                <li id="ember818" class="ember-view nav-item"><a id="ember819" class="ember-view nav-link"
-                        href="#/inventory/items/169926000002258693/transactions?filter_by=Status.All&amp;per_page=50&amp;sort_column=name&amp;sort_order=A">Transactions</a>
-                </li> <!---->
-                <li id="ember820" class="ember-view nav-item"><a id="ember821" class="ember-view nav-link"
-                        href="#/inventory/items/169926000002258693/history?filter_by=Status.All&amp;per_page=50&amp;sort_column=name&amp;sort_order=A">History</a>
-                </li>
-                <div class="d-flex ms-auto"><!----><!----><!----></div>
-            </ul>
-        </div> <!---->
-        <div class="scroll-y noscroll-x fill body scrollbox"><!----> <!---->
-            <div class="tab-content">
-                <div class="tab-pane transactions active"><!----><!---->
-                    <div class="item-details-page"><!---->
-                        <div class="row">
-                            <div class="col-lg-8 col-md-8 col-sm-8 col-8"><!---->
-                                <div class="group pb-3"><!---->
-                                    <div class="row"><label class="col-lg-3 items-label">Item Type</label> <label
-                                            class="col-lg-7">Sales and Purchase Items</label></div><!----><!----><!---->
-                                </div>
-                                <div class="group"><!----><!----><!---->
-                                    <div class="row"><label class="col-lg-3 items-label">HSN Code</label> <label
-                                            class="col-lg-7">85365020</label></div>
-                                    <!----><!----><!----><!----><!----><!----><!----> <!----> <!----> <!----><!---->
-                                    <div class="row"><label class="col-lg-3 items-label">Item Code</label> <label
-                                            class="col-lg-6"><span id="ember822" class="ember-view"><span
-                                                    class="description popover-body p-0  ">89134</span></span></label>
-                                    </div>
-                                    <div class="row"><label class="col-lg-3 items-label">Created Source</label> <label
-                                            class="col-lg-6">User</label></div>
-                                    <div class="row"><label class="items-label col-lg-3 col-md-3 col-sm-3 col-3">Tax
-                                            Preference</label> <label
-                                            class="col-lg-6 col-md-6 col-sm-6 col-6">Taxable</label></div>
-                                    <!----><!---->
-                                    <div class="row"><label class="col-lg-3 items-label">Intra State Tax Rate</label>
-                                        <label class="col-lg-6">GST18 (18 %)</label>
-                                    </div>
-                                    <div class="row"><label class="col-lg-3 items-label">Inter State Tax Rate</label>
-                                        <label class="col-lg-6">IGST18 (18 %)</label>
-                                    </div><!----><!---->
-                                </div> <!----><!----><!----><label class="pb-3 font-medium">Purchase Information</label>
-                                <div class="group">
-                                    <div class="row"><label class="col-lg-3 items-label">Cost Price</label> <label
-                                            class="col-lg-9">₹43.22</label></div>
-                                    <div class="row"><label class="col-lg-3 items-label">Purchase Account</label> <label
-                                            class="col-lg-9">Cost of Goods Sold</label></div> <!----><!----><!---->
-                                </div><label class="pb-3 font-medium">Sales Information</label>
-                                <div class="group">
-                                    <div class="row"><label class="col-lg-3 items-label">Selling Price</label> <label
-                                            class="col-lg-9">₹1.00</label></div> <!---->
-                                    <div class="row"><label class="col-lg-3 items-label">Sales Account</label> <label
-                                            class="col-lg-9">Sales</label></div>
-                                    <!----><!----><!----><!----><!----><!----><!---->
-                                </div><!----> <!----> <!----> <!----> <!----><!----><!---->
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-4" style="padding-top: 7px;">
-                                <div class="group">
-                                    <div id="ember823" class="ember-view">
-                                        <div class="image-upload item-details-image  ">
-                                            <div><!---->
-                                                <div>
-                                                    <div class="hv-centered ">
-                                                        <div><svg xmlns="http://www.w3.org/2000/svg"
-                                                                viewBox="0 0 472.7 386.4"
-                                                                class="icon icon-35 text-grey-shaded">
-                                                                <path
-                                                                    d="M392 0H81C36 0 0 36 0 81v224a81 81 0 0081 81h311c44 0 81-36 81-81V81c0-45-37-81-81-81zM42 81c0-21 18-39 39-39h311c21 0 39 18 39 39v101l-112 76c-10 7-23 7-33-1l-94-66a72 72 0 00-82 1l-68 48V81zm389 224c0 22-18 39-39 39H81c-21 0-39-17-39-39v-14l92-65c10-7 24-7 34 0l94 66a71 71 0 0081 1l88-60v72z">
-                                                                </path>
-                                                                <path
-                                                                    d="M301 83a56 56 0 100 113 56 56 0 000-113zm0 78a21 21 0 110-43 21 21 0 010 43z">
-                                                                </path>
-                                                            </svg></div>
-                                                        <div class="font-small"><label class="text-muted drag-text">Drag
-                                                                image(s) here or</label> <br> <span
-                                                                class="text-blue cursor-pointer">Browse images</span>
-                                                        </div>
-                                                    </div> <span id="upload"><input title=""
-                                                            accept="image/gif,image/jpeg,image/png,image/bmp,image/jpg"
-                                                            id="ember824" class="upload ember-view form-control"
-                                                            type="file"></span>
-                                                </div> <!---->
-                                            </div>
-                                        </div><!----><!---->
-                                    </div><!---->
-                                </div> <!---->
-                            </div>
-                        </div>
-                    </div> <!----> <!----><!---->
-                </div>
-            </div> <!----><!----><!---->
+            <div class="item-Edit">
+                <!-- <button></button> -->
+                 <button class="icon-button" type="button" placement="bottom" ngbTooltip="Edit" (click)="goToEditItem()"><svg style="height: 16px; margin:4px; cursor:pointer " id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 510 512" class="icon icon-sm align-text-bottom" aria-hidden="true"><g id="Layer_2-2"><path d="M50.3 512c-13.04 0-25.74-5.08-35.2-14.35C3.47 486.27-1.93 469.88.64 453.82l16.9-105.61c3.01-18.79 11.71-35.82 25.17-49.27l272.83-272.7c35.01-34.99 91.99-34.98 127.01.02l41.14 41.12c16.96 16.96 26.31 39.5 26.32 63.47 0 23.98-9.33 46.52-26.29 63.47L210.3 467.59c-12.98 12.98-29.4 21.57-47.47 24.84L59.23 511.2c-2.97.54-5.96.8-8.93.8zM379.02 39.99c-12.74 0-25.48 4.85-35.18 14.54L71 327.23c-7.46 7.45-12.28 16.9-13.95 27.31l-16.9 105.61c-.73 4.55 1.54 7.55 2.95 8.93 1.41 1.38 4.46 3.58 8.99 2.76l103.6-18.77A49.498 49.498 0 00182 439.3l273.4-273.27c9.4-9.39 14.57-21.89 14.57-35.18s-5.19-25.79-14.59-35.19l-41.14-41.12c-9.71-9.71-22.47-14.56-35.22-14.56z"></path><path transform="rotate(-45.01 331.896 178.02)" d="M311.84 79.14h40.01v197.75h-40.01z"></path></g></svg></button>
+                <span (click)="unselectedname()" ><svg style="height: 16px; margin:4px; cursor:pointer " version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 512 512" xml:space="preserve" class="icon icon-sm align-text-bottom" aria-hidden="true"><path d="M455.2 9.2L256 208.4 56.8 9.2C44.5-3.1 24.6-3.1 12.2 9.2l-2.9 2.9C-3 24.4-3 44.4 9.3 56.7L208.4 256 9.2 455.2c-12.3 12.3-12.3 32.3 0 44.6l2.9 2.9c12.3 12.3 32.3 12.3 44.6 0L256 303.6l199.2 199.2c12.3 12.3 32.3 12.3 44.6 0l2.9-2.9c12.3-12.3 12.3-32.3 0-44.6L303.6 256 502.8 56.8c12.3-12.3 12.3-32.3 0-44.6l-2.9-2.9c-12.5-12.4-32.4-12.4-44.7-.1z"></path></svg></span>
+                <!-- <button class="btn" style="width: 30px; background-color: transparent;" (click)="unselectedname()"> <i class="fa fa-times" aria-hidden="true" style="font-size: 20px;"></i></button> -->
+            </div>
         </div>
+        <!-- <div class="container"> -->
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="nav-item overview">
+                <a class="nav-link" [class.active]="activeTab === 'tab1'" (click)="changeTab('tab1')">Overview</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [class.active]="activeTab === 'tab2'" (click)="changeTab('tab2')">Transactions</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [class.active]="activeTab === 'tab3'" (click)="changeTab('tab3')">History</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [class.active]="activeTab === 'tab4'" (click)="changeTab('tab4')">Mails</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [class.active]="activeTab === 'tab5'" (click)="changeTab('tab5')">Statements</a>
+              </li>
+            </ul>
+          
+            <div class="tab-content">
+              <div *ngIf="activeTab === 'tab1'" class="tab-pane fade show active">
+                <!-- <h2>Tab 1 Content</h2>
+                <p>This is the content for Tab 1.</p>    -->
+                <app-item-overview></app-item-overview>
+                <!-- <app-overview></app-overview> -->
+              </div>
+              <div *ngIf="activeTab === 'tab2'" class="tab-pane fade show active">
+                    <app-transactions></app-transactions>
+                <!-- <app-wallet></app-wallet> -->
+              </div>
+              <div *ngIf="activeTab === 'tab3'" class="tab-pane fade show active">
+                    <app-history></app-history>
+                <!-- <app-transaction></app-transaction> -->
+              </div>
+              <div *ngIf="activeTab === 'tab4'" class="tab-pane fade show active">
+                <h2>Tab 4 Content</h2>
+                <p>This is the content for Tab 4.</p>
+              </div>
+              <div *ngIf="activeTab === 'tab5'" class="tab-pane fade show active">
+                <h2>Tab 5 Content</h2>
+                <p>This is the content for Tab 5.</p>
+              </div>
+            </div>
+    <!-- </div> -->
     </div> <!----><!----><!----><!----><!----> <!---->
-    <div class="column content-column d-none"><!----> <!----></div>
+    <!-- <div class="column content-column d-none"> </div> -->
 </main>

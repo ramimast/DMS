@@ -1,0 +1,47 @@
+<div class="txnhistory">
+    <!-- <div class="bar"> -->
+    <div class="bar row">
+        <div class="col-lg-12">
+            <div class="float-start">
+                <div class="dropdown">
+                    <span ngbDropdown class="dropdown">
+                        <button class="dropdown-toggle icon-button" ngbDropdownToggle><span class="text-muted">Filter
+                                By:
+                            </span>&nbsp;{{ selectedFilterItem?.label }}</button>
+                        <div ngbDropdownMenu>
+                            <button class="dropdown-item" *ngFor="let item of filterItems" (click)="selectFiletrItem(item)">
+                                {{ item.label }}
+                            </button>
+                        </div>
+                    </span>
+                </div>
+            </div> <!---->
+            <div class="float-start px-3">
+                <div class="dropdown">
+                    <span ngbDropdown class="dropdown">
+                        <button class="dropdown-toggle icon-button" ngbDropdownToggle><span class="text-muted">Status:
+                            </span>&nbsp;{{ selectedSortItems?.label }}</button>
+                        <div ngbDropdownMenu>
+                            <button class="dropdown-item" *ngFor="let item of sortItems" (click)="selectSortItem(item)">
+                                {{ item.label }}
+                            </button>
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- </div> -->
+    <div class="trasaction-list">
+        <div *ngIf="selectedFilterItem?.value; else noItemsTemplate">
+            <p>{{ selectedFilterItem?.value }}</p>
+        </div>
+        <div *ngIf="selectedSortItems?.value; else noItemsTemplate">
+            <p>{{ selectedSortItems?.value }}</p>
+          </div>
+          
+          <ng-template #noItemsTemplate>
+                <div class="font-large">Uhh... There are no notifications at the moment.</div>
+          </ng-template>
+    </div>
+</div>

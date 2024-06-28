@@ -28,13 +28,25 @@ export class ItemsService {
     return this.selectedItemSubject.asObservable();
   }
 
-  setSelectedItem(item: any) {
-    localStorage.setItem('selectedItem', JSON.stringify(item));
-    this.selectedItemSubject.next(item);
+  setSelectedItem(item: any): void {
+    try {
+      localStorage.setItem('selectedItem', JSON.stringify(item));
+      this.selectedItemSubject.next(item);
+    } catch (error) {
+      console.error('Error saving to local storage', error);
+    }
   }
-
 
   addItem(item: any): Observable<any> {
     return this.http.post<any>(this.apiUrl, item);
   }
+
+  updateItem(item: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${item.id}`, item);
+  }
+
+  // getItemById(id: number): Observable<any> {
+  //   return this.http.get(`${this.apiUrl}/${id}`);
+  // }
+
 }

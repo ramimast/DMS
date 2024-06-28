@@ -51,13 +51,13 @@
               <!-- <td *ngFor="let column of columns">
                 {{ row[column] }}
               </td> -->
-              <td> {{row?.name}}</td>
-              <td> {{row?.alias_detail}}</td>
-              <td> {{row?.category}}</td>
-              <td> {{row?.sub_category}}</td>
-              <td> {{row?.sku}}</td>
-              <td> {{row?.unit}}</td>
-              <td> {{row?.hsn}}</td>
+              <td (click)="onRowClick(row)"> {{row?.name}}</td>
+              <td (click)="onRowClick(row)"> {{row?.alias_detail}}</td>
+              <td (click)="onRowClick(row)"> {{row?.category}}</td>
+              <td (click)="onRowClick(row)"> {{row?.sub_category}}</td>
+              <td (click)="onRowClick(row)"> {{row?.sku}}</td>
+              <td (click)="onRowClick(row)"> {{row?.unit}}</td>
+              <td (click)="onRowClick(row)"> {{row?.hsn}}</td>
             </tr>
           </tbody>
         </table>
